@@ -1,5 +1,7 @@
 import database.DatabaseManager;
+import menu.MenuCommandAdd;
 import menu.MenuCommandFetchAll;
+import menu.MenuCommandFetchOne;
 import repository.EmployeeRepository;
 import repository.MysqlEmployeeRepository;
 
@@ -30,38 +32,15 @@ public class Main {
                     menuCommandFetchAll.execute();
                     break;
                 case 2:
-                    System.out.println("Pas encore implementé");
+                    MenuCommandFetchOne menuCommandFetchOne = new MenuCommandFetchOne(employeeRepository, scanner);
+                    menuCommandFetchOne.execute();
                     break;
                 case 3:
                     System.out.println("Pas encore implementé");
                     break;
                 case 4:
-                    System.out.println("Identifiant du programmeur : ");
-                    int id = scanner.nextInt();
-                    System.out.println("Nom du programmeur : ");
-                    String nom = scanner.next();
-                    System.out.println("Prénom du programmeur : ");
-                    String prénom = scanner.next();
-                    System.out.println("Adresse du programmeur : ");
-                    scanner.nextLine();
-                    String adresse = scanner.nextLine();
-                    System.out.println("Pseudo du programmeur : ");
-                    String pseudo = scanner.next();
-                    System.out.println("Responsable du programmeur : ");
-                    scanner.nextLine();
-                    String responsable = scanner.nextLine();
-                    System.out.println("Hobby du programmeur : ");
-                    scanner.nextLine();
-                    String hobby = scanner.nextLine();
-                    System.out.println("Année de naissance du programmeur : ");
-                    int naissance = scanner.nextInt();
-                    System.out.println("Salaire du programmeur : ");
-                    float salaire = scanner.nextFloat();
-                    System.out.println("Prime du programmeur : ");
-                    float prime = scanner.nextFloat();
-
-                    System.out.println("Pas encore implementé");
-
+                    MenuCommandAdd menuCommandAdd = new MenuCommandAdd(employeeRepository, scanner);
+                    menuCommandAdd.execute();
                     break;
                 case 5:
                     System.out.println("Id du programmeur : ");

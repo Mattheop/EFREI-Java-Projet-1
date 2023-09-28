@@ -15,7 +15,7 @@ public class MenuCommandFetchAll implements MenuCommand {
 
     @Override
     public String getCommandName() {
-        return "Afficher tous les programmeurs";
+        return "1. Afficher tous les programmeurs";
     }
 
     @Override

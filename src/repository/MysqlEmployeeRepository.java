@@ -56,7 +56,12 @@ public class MysqlEmployeeRepository implements EmployeeRepository {
 
     @Override
     public boolean save(Employee employee) throws SQLException {
-        return false;
+        if (employee.getId() == null){
+            create(employee);
+            return true;
+        }
+        update(employee);
+        return true;
     }
 
     @Override
