@@ -1,4 +1,5 @@
 import database.DatabaseManager;
+import menu.MenuCommandDeleteOne;
 import menu.MenuCommandAdd;
 import menu.MenuCommandFetchAll;
 import menu.MenuCommandFetchOne;
@@ -36,7 +37,8 @@ public class Main {
                     menuCommandFetchOne.execute();
                     break;
                 case 3:
-                    System.out.println("Pas encore implementé");
+                    MenuCommandDeleteOne menuCommandDeleteOne = new MenuCommandDeleteOne(employeeRepository, scanner);
+                    menuCommandDeleteOne.execute();
                     break;
                 case 4:
                     MenuCommandAdd menuCommandAdd = new MenuCommandAdd(employeeRepository, scanner);

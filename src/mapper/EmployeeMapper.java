@@ -11,7 +11,7 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
-public class EmployeeMapper implements Mapper{
+public class EmployeeMapper implements Mapper {
     @Override
     public Employee mapRow(ResultSet resultSet) throws SQLException {
         Employee employe = new Employee();
@@ -33,7 +33,7 @@ public class EmployeeMapper implements Mapper{
     @Override
     public ArrayList<Employee> mapRows(ResultSet resultSet) throws SQLException {
         ArrayList<Employee> listeEmployes = new ArrayList<>();
-        while(resultSet.next()){
+        while (resultSet.next()) {
             listeEmployes.add(mapRow(resultSet));
         }
 

@@ -155,9 +155,7 @@ public class MysqlEmployeeRepository implements EmployeeRepository {
         PreparedStatement preparedStatement = this.databaseManager.getConnection().prepareStatement("SELECT * FROM employee WHERE id = ? LIMIT 1");
         preparedStatement.setInt(1, id);
 
-        int affectedRows = preparedStatement.executeUpdate();
-        preparedStatement.close();
-
-        return affectedRows == 1;
+        ResultSet resultSet = preparedStatement.executeQuery();
+        return resultSet.isBeforeFirst();
     }
 }
