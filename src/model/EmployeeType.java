@@ -1,7 +1,7 @@
 package model;
 
 public enum EmployeeType {
-    DEVELOPER("Developpeur"),
+    DEVELOPER("Développeur"),
     OTHER("Autre");
 
     private String niceName;
