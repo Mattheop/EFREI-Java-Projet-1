@@ -1,3 +1,7 @@
+ressources/database.properties
+
+
+
 ### IntelliJ IDEA ###
 out/
 !**/src/main/**/out/
