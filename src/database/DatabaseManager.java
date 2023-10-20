@@ -20,6 +20,10 @@ public class DatabaseManager {
         }
     }
 
+    private DatabaseManager(Connection connection) {
+        this.connection = connection;
+    }
+
     public Connection getConnection() {
         return connection;
     }
@@ -27,6 +31,13 @@ public class DatabaseManager {
     public static DatabaseManager getInstance() {
         if (instance == null) {
             instance = new DatabaseManager();
+        }
+        return instance;
+    }
+
+    public static DatabaseManager getInstance(Connection connection) {
+        if (instance == null) {
+            instance = new DatabaseManager(connection);
         }
         return instance;
     }
