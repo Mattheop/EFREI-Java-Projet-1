@@ -22,7 +22,8 @@ public class Main {
             System.out.println("4. Ajouter un programmeur"); // Aristote
             System.out.println("5. Modifier le salaire"); // Matthéo
             System.out.println("6. Rechercher un programmeur");
-            System.out.println("7. Quitter le programme");
+            System.out.println("7. Statistiques");
+            System.out.println("8. Quitter le programme");
             System.out.println("Quel est votre choix ? : ");
             int choix = scanner.nextInt();
 
@@ -61,6 +62,10 @@ public class Main {
                     menuCommandSearch.execute();
                     break;
                 case 7:
+                    MenuCommandStats menuCommandStats = new MenuCommandStats(employeeRepository, scanner);
+                    menuCommandStats.execute();
+                    break;
+                case 8:
                     running = false;
                     break;
                 default:
