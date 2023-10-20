@@ -2,9 +2,11 @@ package menu;
 
 import model.Employee;
 import repository.EmployeeRepository;
+import utils.SafeReader;
 
 import java.sql.SQLException;
 import java.time.Year;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -35,14 +37,13 @@ public class MenuCommandAdd implements MenuCommand{
         scanner.nextLine();
         String responsable = scanner.nextLine();
         System.out.println("Hobby du programmeur : ");
-        scanner.nextLine();
-        String hobby = scanner.nextLine();
+        ArrayList<String> hobby = SafeReader.inputList(scanner);
         System.out.println("Année de naissance du programmeur : ");
-        int naissance = scanner.nextInt();
+        int naissance = SafeReader.checkInt(scanner);
         System.out.println("Salaire du programmeur : ");
-        float salaire = scanner.nextFloat();
+        float salaire = SafeReader.checkFloat(scanner);
         System.out.println("Prime du programmeur : ");
-        float prime = scanner.nextFloat();
+        float prime = SafeReader.checkFloat(scanner);
 
         Employee employe = new Employee();
         employe.setLastName(nom);
@@ -50,7 +51,7 @@ public class MenuCommandAdd implements MenuCommand{
         employe.setAddress(adresse);
         employe.setNickname(pseudo);
         employe.setChief(responsable);
-        employe.setHobbies(List.of(hobby.split(",")));
+        employe.setHobbies(hobby);
         employe.setBirthYear(Year.of(naissance));
         employe.setSalary(salaire);
         employe.setBonus(prime);

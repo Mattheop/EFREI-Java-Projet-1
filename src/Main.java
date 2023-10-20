@@ -5,6 +5,7 @@ import menu.MenuCommandFetchAll;
 import menu.MenuCommandFetchOne;
 import repository.EmployeeRepository;
 import repository.MysqlEmployeeRepository;
+import utils.SafeReader;
 
 import java.sql.SQLException;
 import java.util.Scanner;
@@ -54,7 +55,7 @@ public class Main {
 
                     }
                     System.out.println("Nouveau salaire de ce programmeur : ");
-                    float newsalary = Float.valueOf(scanner.next());
+                    float newsalary = SafeReader.checkFloat(scanner);
                     System.out.println("A implenté");
                     break;
                 case 6:
