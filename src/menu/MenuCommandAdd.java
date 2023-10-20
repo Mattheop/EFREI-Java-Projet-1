@@ -37,7 +37,6 @@ public class MenuCommandAdd implements MenuCommand{
         scanner.nextLine();
         String responsable = scanner.nextLine();
         System.out.println("Hobby du programmeur : ");
-        //scanner.nextLine();
         ArrayList<String> hobby = SafeReader.inputList(scanner);
         System.out.println("Année de naissance du programmeur : ");
         int naissance = SafeReader.checkInt(scanner);
@@ -52,7 +51,6 @@ public class MenuCommandAdd implements MenuCommand{
         employe.setAddress(adresse);
         employe.setNickname(pseudo);
         employe.setChief(responsable);
-        //employe.setHobbies(List.of(hobby.split(",")));
         employe.setHobbies(hobby);
         employe.setBirthYear(Year.of(naissance));
         employe.setSalary(salaire);

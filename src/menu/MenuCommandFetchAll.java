@@ -26,7 +26,6 @@ public class MenuCommandFetchAll implements MenuCommand {
                 System.out.println(employee);
             }
         } catch (SQLException e) {
-            System.out.println(e);
             System.out.println("Impossible de communiquer avec la base de données");
         }
     }

@@ -6,7 +6,7 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class SafeReader {
-    public static float checkFloat(Scanner scanner){
+    public static float checkFloat(Scanner scanner) {
         boolean correctinput = false;
         float newinput = 0f;
         while (!correctinput) {
@@ -22,7 +22,7 @@ public class SafeReader {
     }
 
 
-    public static int checkInt(Scanner scanner){
+    public static int checkInt(Scanner scanner) {
         boolean correctinput = false;
         int newinput = 0;
         while (!correctinput) {
@@ -37,16 +37,15 @@ public class SafeReader {
         return newinput;
     }
 
-    public static ArrayList<String> inputList(Scanner scanner){
+    public static ArrayList<String> inputList(Scanner scanner) {
         boolean finished = false;
         String newinput;
         ArrayList<String> inputs = new ArrayList<>();
         while (!finished) {
             newinput = scanner.nextLine();
-            if (Objects.equals(newinput, "")){
+            if (Objects.equals(newinput, "")) {
                 finished = true;
-            }
-            else{
+            } else {
                 inputs.add(newinput);
             }
         }
