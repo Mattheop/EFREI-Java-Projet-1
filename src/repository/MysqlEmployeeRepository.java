@@ -85,9 +85,9 @@ public class MysqlEmployeeRepository implements EmployeeRepository {
                         """, PreparedStatement.RETURN_GENERATED_KEYS);
 
         if (o.getType() == null) {
-            preparedStatement.setString(1, EmployeeType.DEVELOPER.toString());
+            preparedStatement.setString(1, EmployeeType.OTHER.getDatabaseName());
         } else {
-            preparedStatement.setString(1, o.getType().toString());
+            preparedStatement.setString(1, o.getType().getDatabaseName());
         }
 
         preparedStatement.setString(2, o.getFirstName());
@@ -127,8 +127,7 @@ public class MysqlEmployeeRepository implements EmployeeRepository {
                                             nickname = ?, chief = ?, hobbies = ?, birth_year = ?, salary = ?, bonus = ?
                         WHERE id = ?
                         """);
-
-        preparedStatement.setString(1, o.getType().toString());
+        preparedStatement.setString(1, o.getType().getDatabaseName());
         preparedStatement.setString(2, o.getFirstName());
         preparedStatement.setString(3, o.getLastName());
         preparedStatement.setString(4, o.getAddress());
