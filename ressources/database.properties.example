@@ -1,0 +1,6 @@
+database.name=APTN61_BD
+database.username=
+database.password=
+database.driver=mysql
+database.host=localhost
+database.port=3306

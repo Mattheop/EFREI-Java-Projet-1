@@ -11,10 +11,12 @@ public class DatabaseManager {
 
     private DatabaseManager() {
         try {
-            this.connection = DriverManager.getConnection(DatabaseConfig.DATABASE_URL, DatabaseConfig.DATABASE_USER, DatabaseConfig.DATABASE_PASSWORD);
+            DatabaseConfig config = DatabaseConfig.getInstance();
+            this.connection = DriverManager.getConnection(config.buildUrl(), config.getDatabaseUser(), config.getDatabasePassword());
         }
         catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println("Error while connecting to database.");
+            throw new RuntimeException(e);
         }
     }
 
