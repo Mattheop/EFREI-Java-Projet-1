@@ -42,6 +42,21 @@ public class MysqlEmployeeRepository implements EmployeeRepository {
     }
 
     @Override
+    public ArrayList<Employee> fetchByNames(String names) throws SQLException {
+        PreparedStatement preparedStatement = this.databaseManager.getConnection().prepareStatement("SELECT * FROM employee WHERE first_name LIKE ? OR last_name LIKE ?");
+        preparedStatement.setString(1, "%" + names + "%");
+        preparedStatement.setString(2, "%" + names + "%");
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+        ArrayList<Employee> employees = this.mapper.mapRows(resultSet);
+
+        preparedStatement.close();
+        resultSet.close();
+
+        return employees;
+    }
+
+    @Override
     public ArrayList<Employee> fetchAll() throws SQLException {
         PreparedStatement preparedStatement = this.databaseManager.getConnection().prepareStatement("SELECT * FROM employee");
 

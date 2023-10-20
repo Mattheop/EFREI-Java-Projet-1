@@ -1,8 +1,5 @@
 import database.DatabaseManager;
-import menu.MenuCommandDeleteOne;
-import menu.MenuCommandAdd;
-import menu.MenuCommandFetchAll;
-import menu.MenuCommandFetchOne;
+import menu.*;
 import repository.EmployeeRepository;
 import repository.MysqlEmployeeRepository;
 import utils.SafeReader;
@@ -24,7 +21,8 @@ public class Main {
             System.out.println("3. Supprimer un programmeur"); // Matthéo
             System.out.println("4. Ajouter un programmeur"); // Aristote
             System.out.println("5. Modifier le salaire"); // Matthéo
-            System.out.println("6. Quitter le programme");
+            System.out.println("6. Rechercher un programmeur");
+            System.out.println("7. Quitter le programme");
             System.out.println("Quel est votre choix ? : ");
             int choix = scanner.nextInt();
 
@@ -59,6 +57,10 @@ public class Main {
                     System.out.println("A implenté");
                     break;
                 case 6:
+                    MenuCommandSearch menuCommandSearch = new MenuCommandSearch(employeeRepository, scanner);
+                    menuCommandSearch.execute();
+                    break;
+                case 7:
                     running = false;
                     break;
                 default:
