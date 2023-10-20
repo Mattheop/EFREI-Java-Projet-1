@@ -15,7 +15,7 @@ public class RHTableModel extends AbstractTableModel {
     private final JLabelStatus statusLabel;
 
     private ArrayList<Employee> employees;
-    private String[] columns;
+    private final String[] columns;
 
     public RHTableModel(EmployeeRepository employeeRepository, JLabelStatus statusLabel) throws SQLException {
         super();
@@ -85,12 +85,12 @@ public class RHTableModel extends AbstractTableModel {
             }
             case 7 -> {
                 String salaryString = (String) value;
-                float salary = Float.parseFloat(salaryString.replace("€", ""));
+                float salary = Float.parseFloat(salaryString.replaceAll("€", "").replaceAll(",", "."));
                 this.employees.get(rowIndex).setSalary(salary);
             }
             case 8 -> {
                 String bonusString = (String) value;
-                float bonus = Float.parseFloat(bonusString.replace("€", ""));
+                float bonus = Float.parseFloat(bonusString.replaceAll("€", "").replaceAll(",", "."));
                 this.employees.get(rowIndex).setBonus(bonus);
             }
             default -> throw new IllegalStateException("Unexpected value: " + columnIndex);
