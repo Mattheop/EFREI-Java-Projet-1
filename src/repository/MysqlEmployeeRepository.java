@@ -172,4 +172,18 @@ public class MysqlEmployeeRepository implements EmployeeRepository {
         ResultSet resultSet = preparedStatement.executeQuery();
         return resultSet.isBeforeFirst();
     }
+
+    @Override
+    public int count() throws SQLException {
+        PreparedStatement preparedStatement = this.databaseManager.getConnection().prepareStatement("SELECT COUNT(*) FROM employee");
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+        resultSet.next();
+        int count = resultSet.getInt(1);
+
+        preparedStatement.close();
+        resultSet.close();
+
+        return count;
+    }
 }

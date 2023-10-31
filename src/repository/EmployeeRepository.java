@@ -12,4 +12,5 @@ public interface EmployeeRepository {
     boolean save(Employee employee) throws SQLException;
     boolean remove(int id) throws SQLException;
     boolean exist(int id) throws SQLException;
+    int count() throws SQLException;
 }

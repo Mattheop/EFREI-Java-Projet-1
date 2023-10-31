@@ -3,6 +3,7 @@ package ui;
 import database.DatabaseManager;
 import repository.EmployeeRepository;
 import repository.MysqlEmployeeRepository;
+import services.EmployeeService;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,6 +14,7 @@ import java.sql.SQLException;
 public class UIMainForm extends JFrame {
 
     private final EmployeeRepository employeeRepository;
+    private final EmployeeService employeeService;
     private JTable table;
     private JLabelStatus bottomStatusLabel;
     private RHTableModel tableModel;
@@ -20,6 +22,7 @@ public class UIMainForm extends JFrame {
     public UIMainForm() {
         DatabaseManager databaseManager = DatabaseManager.getInstance();
         this.employeeRepository = new MysqlEmployeeRepository(databaseManager);
+        this.employeeService = new EmployeeService(employeeRepository);
 
         try {
             initComponents();
@@ -54,8 +57,43 @@ public class UIMainForm extends JFrame {
         add(panel, BorderLayout.PAGE_START);
 
         // Bottom status bar
+        JPanel botomPanel = new JPanel();
+        botomPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+
         bottomStatusLabel = new JLabelStatus(1700);
-        add(bottomStatusLabel, BorderLayout.PAGE_END);
+        botomPanel.add(bottomStatusLabel);
+
+        JPanel statsPanel = new JPanel();
+        statsPanel.setLayout(new GridLayout(1, 4));
+
+        JPanel employeeCountPanel = new JPanel();
+        employeeCountPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+        employeeCountPanel.add(new JLabel("Nombre d'employés : "));
+        employeeCountPanel.add(new JLabel(String.format("%d employés", this.employeeRepository.count())));
+        statsPanel.add(employeeCountPanel);
+
+        JPanel employeeSalaryAvgPanel = new JPanel();
+        employeeSalaryAvgPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+        employeeSalaryAvgPanel.add(new JLabel("Salaire moyen : "));
+        employeeSalaryAvgPanel.add(new JLabel(String.format("%.2f €", this.employeeService.calculateAverageSalary())));
+        statsPanel.add(employeeSalaryAvgPanel);
+
+        JPanel employeeBonusAvgPanel = new JPanel();
+        employeeBonusAvgPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+        employeeBonusAvgPanel.add(new JLabel("Bonus moyen : "));
+        employeeBonusAvgPanel.add(new JLabel(String.format("%.2f €", this.employeeService.calculateAverageBonus())));
+        statsPanel.add(employeeBonusAvgPanel);
+
+
+        JPanel employeeAgeAvgPanel = new JPanel();
+        employeeAgeAvgPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+        employeeAgeAvgPanel.add(new JLabel("Age moyen : "));
+        employeeAgeAvgPanel.add(new JLabel(String.format("%.2f ans", this.employeeService.calculateAverageAge())));
+        statsPanel.add(employeeAgeAvgPanel);
+
+        botomPanel.add(statsPanel);
+
+        add(botomPanel, BorderLayout.PAGE_END);
 
         // Center table
         tableModel = new RHTableModel(this.employeeRepository, bottomStatusLabel);

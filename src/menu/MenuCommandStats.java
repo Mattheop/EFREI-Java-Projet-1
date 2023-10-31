@@ -2,6 +2,7 @@ package menu;
 
 import model.Employee;
 import repository.EmployeeRepository;
+import services.EmployeeService;
 import utils.SafeReader;
 
 import java.sql.SQLException;
@@ -11,11 +12,13 @@ import java.util.Scanner;
 
 public class MenuCommandStats implements MenuCommand {
     private EmployeeRepository employeeRepository;
+    private EmployeeService employeeService;
     private Scanner scanner;
 
     public MenuCommandStats(EmployeeRepository employeeRepository, Scanner scanner) {
         this.employeeRepository = employeeRepository;
         this.scanner = scanner;
+        this.employeeService = new EmployeeService(employeeRepository);
     }
 
     @Override
@@ -25,45 +28,26 @@ public class MenuCommandStats implements MenuCommand {
 
     @Override
     public void execute() {
-        float currentsalary;
-        float sumsalaries = 0;
-        float mediumsalary = 0;
-        float currentbonus;
-        float sumbonuses = 0;
-        float mediumbonus = 0;
-        float currentage;
-        float sumages = 0;
-        float mediumage = 0;
-        int index = 0;
         System.out.println("1. Salaire moyen\n2. Prime moyenne\n3. Age moyen");
         int cmd = SafeReader.checkInt(scanner);
+
         try {
-            ArrayList<Employee> fetchedEmployees = this.employeeRepository.fetchAll();
-            for (Employee employee : fetchedEmployees) {
-                currentsalary = employee.getSalary();
-                sumsalaries += currentsalary;
-                currentbonus = employee.getBonus();
-                sumbonuses += currentbonus;
-                currentage = Year.now().getValue() - employee.getBirthYear().getValue();
-                sumages += currentage;
-                index++;
-            }
-            mediumsalary = sumsalaries / index;
-            mediumbonus = sumbonuses / index;
-            mediumage = sumages / index;
             switch (cmd) {
                 case 1:
-                    System.out.println(mediumsalary);
+                    System.out.print("Le salaire moyen est de :");
+                    System.out.printf("%.2f euros%n", employeeService.calculateAverageSalary());
                     break;
                 case 2:
-                    System.out.println(mediumbonus);
+                    System.out.print("La prime moyenne est de :");
+                    System.out.printf("%.2f euros%n", employeeService.calculateAverageBonus());
                     break;
                 case 3:
-                    System.out.println(mediumage);
+                    System.out.print("L'âge moyen est de :");
+                    System.out.printf("%.2f ans%n", employeeService.calculateAverageAge());
                     break;
             }
-        } catch (SQLException e) {
-            System.out.println("Impossible de communiquer avec la base de données");
+        } catch (SQLException e){
+            System.out.println("Erreur lors de la récupération des employés");
         }
     }
 }
