@@ -9,18 +9,26 @@ import java.time.Year;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class MenuCommandAdd implements MenuCommand{
+public class MenuCommandAdd implements MenuCommand {
     private final EmployeeRepository employeeRepository;
     private final Scanner scanner;
 
+    /**
+     * Constructeur de la commande permettant d'ajouter un employé
+     *
+     * @param employeeRepository repository des employés
+     * @param scanner            scanner pour la saisie utilisateur (from {@link menu.MenuManager})
+     */
     public MenuCommandAdd(EmployeeRepository employeeRepository, Scanner scanner) {
         this.employeeRepository = employeeRepository;
         this.scanner = scanner;
     }
+
     @Override
     public String getCommandName() {
         return "Ajouter un programmeur";
     }
+
     @Override
     public void execute() {
         System.out.println("Nom du programmeur : ");

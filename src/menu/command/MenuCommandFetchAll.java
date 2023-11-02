@@ -11,6 +11,11 @@ public class MenuCommandFetchAll implements MenuCommand {
     private final EmployeeRepository employeeRepository;
     private final EmployeeService employeeService;
 
+    /**
+     * Constructeur de la commande permettant d'afficher tous les programmeurs
+     *
+     * @param employeeRepository repository des programmeurs
+     */
     public MenuCommandFetchAll(EmployeeRepository employeeRepository) {
         this.employeeRepository = employeeRepository;
         this.employeeService = new EmployeeService(employeeRepository);
@@ -25,7 +30,7 @@ public class MenuCommandFetchAll implements MenuCommand {
     public void execute() {
         try {
             ArrayList<Employee> fetchedEmployees = this.employeeRepository.fetchAll();
-            for(Employee employee : fetchedEmployees){
+            for (Employee employee : fetchedEmployees) {
                 System.out.println(this.employeeService.employeeToFormattedDetails(employee));
             }
         } catch (SQLException e) {

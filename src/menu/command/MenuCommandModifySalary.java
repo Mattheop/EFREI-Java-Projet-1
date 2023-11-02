@@ -12,6 +12,12 @@ public class MenuCommandModifySalary implements MenuCommand {
     private final EmployeeRepository employeeRepository;
     private final Scanner scanner;
 
+    /**
+     * Constructeur de la commande permettant de modifier le salaire d'un programmeur
+     *
+     * @param employeeRepository repository des programmeurs
+     * @param scanner            scanner pour la saisie utilisateur (from {@link menu.MenuManager})
+     */
     public MenuCommandModifySalary(EmployeeRepository employeeRepository, Scanner scanner) {
         this.employeeRepository = employeeRepository;
         this.scanner = scanner;
@@ -28,10 +34,10 @@ public class MenuCommandModifySalary implements MenuCommand {
         boolean isEmployeeExist = false;
         int aId = 0;
         while (!isEmployeeExist) {
-            aId = scanner.nextInt();
+            aId = SafeReader.checkInt(this.scanner);
             try {
                 isEmployeeExist = this.employeeRepository.exist(aId);
-                if (!isEmployeeExist){
+                if (!isEmployeeExist) {
                     System.out.println("Le programmeur n'existe pas, veuillez entrer un autre id : ");
                 }
             } catch (SQLException e) {
