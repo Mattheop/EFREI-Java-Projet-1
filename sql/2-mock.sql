@@ -1,3 +1,5 @@
+USE APTN61_BD;
+
 INSERT INTO employee (type, first_name, last_name, address, nickname, chief, hobbies, birth_year, salary, bonus)
 VALUES
     ('developer', 'John', 'Doe', '123 Main St, City, Country', 'johndoe', "Pierre Chef", 'Coding, Reading', 1985, 75000.00, 5000.00),
