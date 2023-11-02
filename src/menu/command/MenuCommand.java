@@ -1,4 +1,4 @@
-package menu;
+package menu.command;
 
 public interface MenuCommand {
     String getCommandName();

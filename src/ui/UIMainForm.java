@@ -3,7 +3,7 @@ package ui;
 import database.DatabaseManager;
 import repository.EmployeeRepository;
 import repository.MysqlEmployeeRepository;
-import services.EmployeeService;
+import service.EmployeeService;
 
 import javax.swing.*;
 import java.awt.*;

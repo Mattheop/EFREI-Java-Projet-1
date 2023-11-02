@@ -1,7 +1,6 @@
-package utils;
+package util;
 
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.Objects;
 import java.util.Scanner;
 

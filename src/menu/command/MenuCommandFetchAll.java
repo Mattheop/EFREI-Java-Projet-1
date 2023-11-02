@@ -1,4 +1,4 @@
-package menu;
+package menu.command;
 
 import model.Employee;
 import repository.EmployeeRepository;

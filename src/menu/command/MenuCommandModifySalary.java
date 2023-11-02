@@ -1,27 +1,28 @@
-package menu;
+package menu.command;
 
 import repository.EmployeeRepository;
 
 import java.sql.SQLException;
 import java.util.Scanner;
 
-public class MenuCommandDeleteOne implements MenuCommand {
+public class MenuCommandModifySalary implements MenuCommand {
+
     private final EmployeeRepository employeeRepository;
     private final Scanner scanner;
 
-    public MenuCommandDeleteOne(EmployeeRepository employeeRepository, Scanner scanner) {
+    public MenuCommandModifySalary(EmployeeRepository employeeRepository, Scanner scanner) {
         this.employeeRepository = employeeRepository;
         this.scanner = scanner;
     }
 
     @Override
     public String getCommandName() {
-        return "Supprimer un programmeur";
+        return "Modifier le salaire d'un développeur";
     }
 
     @Override
     public void execute() {
-        System.out.println("Id du programmeur à supprimer : ");
+        System.out.println("Id du programmeur à modifier le salaire : ");
         boolean isEmployeeExist = false;
         int aId = 0;
         while (!isEmployeeExist) {
@@ -38,6 +39,8 @@ public class MenuCommandDeleteOne implements MenuCommand {
         }
 
         try {
+            System.out.println("Veuillez entrer le nouveau salaire : ");
+
             this.employeeRepository.remove(aId);
         } catch (SQLException e) {
             System.out.println("Impossible de communiquer avec la basse de donnée");
@@ -45,5 +48,6 @@ public class MenuCommandDeleteOne implements MenuCommand {
         }
 
         System.out.println("Le programmeur a bien été supprimé !");
+
     }
 }

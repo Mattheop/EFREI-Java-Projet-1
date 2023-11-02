@@ -1,13 +1,12 @@
-package menu;
+package menu.command;
 
 import model.Employee;
 import repository.EmployeeRepository;
-import utils.SafeReader;
+import util.SafeReader;
 
 import java.sql.SQLException;
 import java.time.Year;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class MenuCommandAdd implements MenuCommand{

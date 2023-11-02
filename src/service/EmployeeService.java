@@ -1,4 +1,4 @@
-package services;
+package service;
 
 import model.Employee;
 import repository.EmployeeRepository;
