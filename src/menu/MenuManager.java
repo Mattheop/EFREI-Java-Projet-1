@@ -7,8 +7,8 @@ import java.util.Scanner;
 
 public class MenuManager {
 
-    private Scanner scanner;
-    private ArrayList<MenuCommand> commands;
+    private final Scanner scanner;
+    private final ArrayList<MenuCommand> commands;
 
     public MenuManager(Scanner scanner, ArrayList<MenuCommand> commands) {
         this.scanner = scanner;

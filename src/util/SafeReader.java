@@ -10,7 +10,7 @@ public class SafeReader {
         float newinput = 0f;
         while (!correctinput) {
             try {
-                newinput = Float.valueOf(scanner.next());
+                newinput = Float.parseFloat(scanner.next());
                 correctinput = true;
             } catch (NumberFormatException e) {
                 System.out.println("Entrez un nombre flottant : ");
@@ -26,7 +26,7 @@ public class SafeReader {
         int newinput = 0;
         while (!correctinput) {
             try {
-                newinput = Integer.valueOf(scanner.next());
+                newinput = Integer.parseInt(scanner.next());
                 correctinput = true;
             } catch (NumberFormatException e) {
                 System.out.println("Entrez un entier : ");

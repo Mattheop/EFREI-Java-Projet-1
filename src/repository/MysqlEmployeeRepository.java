@@ -11,8 +11,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class MysqlEmployeeRepository implements EmployeeRepository {
-    private EmployeeMapper mapper;
-    private DatabaseManager databaseManager;
+    private final EmployeeMapper mapper;
+    private final DatabaseManager databaseManager;
 
     public MysqlEmployeeRepository(DatabaseManager databaseManager) {
         this.databaseManager = databaseManager;

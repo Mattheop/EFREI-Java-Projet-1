@@ -4,7 +4,7 @@ public enum EmployeeType {
     DEVELOPER("Développeur", "developer"),
     OTHER("Autre", "other");
 
-    private String niceName;
+    private final String niceName;
     private final String databaseName;
 
     EmployeeType(String niceName, String databaseName) {

@@ -8,12 +8,10 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 public class MenuCommandStats implements MenuCommand {
-    private EmployeeRepository employeeRepository;
-    private EmployeeService employeeService;
-    private Scanner scanner;
+    private final EmployeeService employeeService;
+    private final Scanner scanner;
 
     public MenuCommandStats(EmployeeRepository employeeRepository, Scanner scanner) {
-        this.employeeRepository = employeeRepository;
         this.scanner = scanner;
         this.employeeService = new EmployeeService(employeeRepository);
     }
