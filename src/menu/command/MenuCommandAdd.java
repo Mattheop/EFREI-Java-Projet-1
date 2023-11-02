@@ -43,7 +43,7 @@ public class MenuCommandAdd implements MenuCommand {
         System.out.println("Responsable du programmeur : ");
         scanner.nextLine();
         String responsable = scanner.nextLine();
-        System.out.println("Hobby du programmeur : ");
+        System.out.println("Hobby du programmeur (1 par ligne, entrer vide pour terminer): ");
         ArrayList<String> hobby = SafeReader.inputList(scanner);
         System.out.println("Année de naissance du programmeur : ");
         int naissance = SafeReader.checkInt(scanner);

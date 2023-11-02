@@ -39,6 +39,7 @@ public class MenuCommandSearch implements MenuCommand {
             ArrayList<Employee> fetchedEmployees = this.employeeRepository.fetchByNames(search);
             for (Employee employee : fetchedEmployees) {
                 System.out.println(this.employeeService.employeeToFormattedDetails(employee));
+                System.out.println("--------------------------------------------------");
             }
 
             if (fetchedEmployees.isEmpty()) {

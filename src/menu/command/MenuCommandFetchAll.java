@@ -32,6 +32,7 @@ public class MenuCommandFetchAll implements MenuCommand {
             ArrayList<Employee> fetchedEmployees = this.employeeRepository.fetchAll();
             for (Employee employee : fetchedEmployees) {
                 System.out.println(this.employeeService.employeeToFormattedDetails(employee));
+                System.out.println("--------------------------------------------------");
             }
         } catch (SQLException e) {
             System.out.println("Impossible de communiquer avec la base de données");

@@ -42,6 +42,7 @@ public class MenuCommandFetchOne implements MenuCommand {
                     System.out.println("Recherche KO. Saisissez à nouveau l'id : ");
                 } else {
                     System.out.println(this.employeeService.employeeToFormattedDetails(fetchedEmployee));
+                    System.out.println("--------------------------------------------------");
                     correctnumber = true;
                 }
             } catch (SQLException e) {
