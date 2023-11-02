@@ -20,7 +20,7 @@ public class MenuCommandStats implements MenuCommand {
 
     @Override
     public String getCommandName() {
-        return "7. Statistiques";
+        return "Statistiques";
     }
 
     @Override

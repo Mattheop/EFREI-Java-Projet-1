@@ -17,7 +17,7 @@ public class MenuCommandFetchOne implements MenuCommand {
 
     @Override
     public String getCommandName() {
-        return "2. Afficher un programmeur";
+        return "Afficher un programmeur";
     }
     @Override
     public void execute() {

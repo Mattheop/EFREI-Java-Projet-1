@@ -19,7 +19,7 @@ public class MenuCommandAdd implements MenuCommand{
     }
     @Override
     public String getCommandName() {
-        return "4. Ajouter un programmeur";
+        return "Ajouter un programmeur";
     }
     @Override
     public void execute() {
