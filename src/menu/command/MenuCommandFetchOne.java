@@ -3,6 +3,7 @@ package menu.command;
 import model.Employee;
 import repository.EmployeeRepository;
 import service.EmployeeService;
+import util.SafeReader;
 
 import java.sql.SQLException;
 import java.util.Scanner;
@@ -12,6 +13,12 @@ public class MenuCommandFetchOne implements MenuCommand {
     private final Scanner scanner;
     private final EmployeeService employeeService;
 
+    /**
+     * Constructeur de la commande permettant d'afficher un programmeur
+     *
+     * @param employeeRepository repository des programmeurs
+     * @param scanner            scanner utilisé pour récupérer les entrées utilisateur (normalement provient de {@link menu.MenuManager})
+     */
     public MenuCommandFetchOne(EmployeeRepository employeeRepository, Scanner scanner) {
         this.employeeRepository = employeeRepository;
         this.scanner = scanner;
@@ -22,12 +29,13 @@ public class MenuCommandFetchOne implements MenuCommand {
     public String getCommandName() {
         return "Afficher un programmeur";
     }
+
     @Override
     public void execute() {
         System.out.println("Id du programmeur à afficher : ");
         boolean correctnumber = false;
         while (!correctnumber) {
-            int id = scanner.nextInt();
+            int id = SafeReader.checkInt(scanner);
             try {
                 Employee fetchedEmployee = this.employeeRepository.fetchById(id);
                 if (fetchedEmployee == null) {

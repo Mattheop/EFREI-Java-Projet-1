@@ -10,10 +10,20 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+/**
+ * Implementation de l'interface EmployeeRepository en utilisant une base de données MySQL
+ *
+ * @see EmployeeRepository
+ */
 public class MysqlEmployeeRepository implements EmployeeRepository {
     private final EmployeeMapper mapper;
     private final DatabaseManager databaseManager;
 
+    /**
+     * Constructor
+     *
+     * @param databaseManager access to the database
+     */
     public MysqlEmployeeRepository(DatabaseManager databaseManager) {
         this.databaseManager = databaseManager;
 
@@ -71,7 +81,7 @@ public class MysqlEmployeeRepository implements EmployeeRepository {
 
     @Override
     public boolean save(Employee employee) throws SQLException {
-        if (employee.getId() == null){
+        if (employee.getId() == null) {
             create(employee);
             return true;
         }

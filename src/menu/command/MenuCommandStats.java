@@ -11,6 +11,12 @@ public class MenuCommandStats implements MenuCommand {
     private final EmployeeService employeeService;
     private final Scanner scanner;
 
+    /**
+     * Constructeur de la commande permettant d'afficher les statistiques
+     *
+     * @param employeeRepository repository des employés
+     * @param scanner            scanner pour la saisie utilisateur (from {@link menu.MenuManager})
+     */
     public MenuCommandStats(EmployeeRepository employeeRepository, Scanner scanner) {
         this.scanner = scanner;
         this.employeeService = new EmployeeService(employeeRepository);
@@ -41,7 +47,7 @@ public class MenuCommandStats implements MenuCommand {
                     System.out.printf("%.2f ans%n", employeeService.calculateAverageAge());
                     break;
             }
-        } catch (SQLException e){
+        } catch (SQLException e) {
             System.out.println("Erreur lors de la récupération des employés");
         }
     }

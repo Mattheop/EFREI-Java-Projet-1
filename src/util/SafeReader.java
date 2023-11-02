@@ -5,12 +5,18 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class SafeReader {
+
+    /**
+     * Permet de manière sécurisé de lire un float.
+     * @param scanner le scanner à utiliser.
+     * @return
+     */
     public static float checkFloat(Scanner scanner) {
         boolean correctinput = false;
         float newinput = 0f;
         while (!correctinput) {
             try {
-                newinput = Float.parseFloat(scanner.next());
+                newinput = Float.parseFloat(scanner.nextLine());
                 correctinput = true;
             } catch (NumberFormatException e) {
                 System.out.println("Entrez un nombre flottant : ");
@@ -26,7 +32,7 @@ public class SafeReader {
         int newinput = 0;
         while (!correctinput) {
             try {
-                newinput = Integer.parseInt(scanner.next());
+                newinput = Integer.parseInt(scanner.nextLine());
                 correctinput = true;
             } catch (NumberFormatException e) {
                 System.out.println("Entrez un entier : ");
