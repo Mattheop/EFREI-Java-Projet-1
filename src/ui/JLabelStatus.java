@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 public class JLabelStatus extends JLabel {
 
     private Timer timer;
-    private int ms;
+    private final int ms;
 
     private final ActionListener taskPerformer;
 

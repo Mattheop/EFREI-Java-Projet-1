@@ -4,11 +4,10 @@ import menu.command.*;
 import repository.EmployeeRepository;
 import repository.MysqlEmployeeRepository;
 
-import java.sql.SQLException;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) {
         DatabaseManager databaseManager = DatabaseManager.getInstance();
         EmployeeRepository employeeRepository = new MysqlEmployeeRepository(databaseManager);
         MenuManager menuManager = new MenuManager();

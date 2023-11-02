@@ -1,11 +1,9 @@
 import database.DatabaseManager;
 import fixtures.EmployeeFixtures;
 import model.Employee;
-import model.EmployeeType;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import org.zapodot.junit.db.EmbeddedDatabaseExtension;
 import org.zapodot.junit.db.common.CompatibilityMode;
@@ -14,16 +12,12 @@ import repository.MysqlEmployeeRepository;
 
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.time.Year;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
 
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class DatabaseManager {
 
     private static DatabaseManager instance;
-    private Connection connection;
+    private final Connection connection;
 
     private DatabaseManager() {
         try {
