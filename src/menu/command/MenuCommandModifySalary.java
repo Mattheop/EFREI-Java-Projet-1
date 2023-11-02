@@ -1,6 +1,8 @@
 package menu.command;
 
+import model.Employee;
 import repository.EmployeeRepository;
+import util.SafeReader;
 
 import java.sql.SQLException;
 import java.util.Scanner;
@@ -41,13 +43,17 @@ public class MenuCommandModifySalary implements MenuCommand {
         try {
             System.out.println("Veuillez entrer le nouveau salaire : ");
 
-            this.employeeRepository.remove(aId);
+            float salary = SafeReader.checkFloat(this.scanner);
+
+            Employee employee = this.employeeRepository.fetchById(aId);
+            employee.setSalary(salary);
+            this.employeeRepository.save(employee);
         } catch (SQLException e) {
             System.out.println("Impossible de communiquer avec la basse de donnée");
             throw new RuntimeException(e);
         }
 
-        System.out.println("Le programmeur a bien été supprimé !");
+        System.out.println("Le salaire a bien été modifié.");
 
     }
 }

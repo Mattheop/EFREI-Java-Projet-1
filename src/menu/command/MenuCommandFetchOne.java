@@ -2,6 +2,7 @@ package menu.command;
 
 import model.Employee;
 import repository.EmployeeRepository;
+import service.EmployeeService;
 
 import java.sql.SQLException;
 import java.util.Scanner;
@@ -9,10 +10,12 @@ import java.util.Scanner;
 public class MenuCommandFetchOne implements MenuCommand {
     private final EmployeeRepository employeeRepository;
     private final Scanner scanner;
+    private final EmployeeService employeeService;
 
     public MenuCommandFetchOne(EmployeeRepository employeeRepository, Scanner scanner) {
         this.employeeRepository = employeeRepository;
         this.scanner = scanner;
+        this.employeeService = new EmployeeService(employeeRepository);
     }
 
     @Override
@@ -30,7 +33,7 @@ public class MenuCommandFetchOne implements MenuCommand {
                 if (fetchedEmployee == null) {
                     System.out.println("Recherche KO. Saisissez à nouveau l'id : ");
                 } else {
-                    System.out.println(fetchedEmployee);
+                    System.out.println(this.employeeService.employeeToFormattedDetails(fetchedEmployee));
                     correctnumber = true;
                 }
             } catch (SQLException e) {

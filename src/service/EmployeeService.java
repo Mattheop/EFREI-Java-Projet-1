@@ -11,7 +11,7 @@ public class EmployeeService {
 
     private final EmployeeRepository employeeRepository;
 
-    public EmployeeService(EmployeeRepository employeeRepository){
+    public EmployeeService(EmployeeRepository employeeRepository) {
         this.employeeRepository = employeeRepository;
     }
 
@@ -46,5 +46,19 @@ public class EmployeeService {
         }
 
         return sum / fetchedEmployees.size();
+    }
+
+    public String employeeToFormattedDetails(Employee employee) {
+        return "ID : " + employee.getId() + "\n" +
+                "Type : " + employee.getType() + "\n" +
+                "Nom : " + employee.getLastName() + "\n" +
+                "Prénom : " + employee.getFirstName() + "\n" +
+                "Année de naissance : " + employee.getBirthYear().getValue() + "\n" +
+                "Adresse : " + employee.getAddress() + "\n" +
+                "Salaire : " + employee.getSalary() + "\n" +
+                "Prime : " + employee.getBonus() + "\n" +
+                "Chef : " + employee.getChief() + "\n" +
+                "Surnom : " + employee.getNickname() + "\n" +
+                "Hobbies : " + String.join(", ", employee.getHobbies()) + "\n";
     }
 }
