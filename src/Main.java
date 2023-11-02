@@ -1,8 +1,8 @@
 import database.DatabaseManager;
-import menu.*;
+import menu.command.*;
 import repository.EmployeeRepository;
 import repository.MysqlEmployeeRepository;
-import utils.SafeReader;
+import util.SafeReader;
 
 import java.sql.SQLException;
 import java.util.Scanner;

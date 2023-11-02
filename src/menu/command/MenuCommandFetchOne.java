@@ -1,10 +1,9 @@
-package menu;
+package menu.command;
 
 import model.Employee;
 import repository.EmployeeRepository;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MenuCommandFetchOne implements MenuCommand {
