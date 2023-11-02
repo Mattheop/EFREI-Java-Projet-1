@@ -17,7 +17,7 @@ public class MenuCommandSearch implements MenuCommand {
     }
 
     public String getCommandName() {
-        return "6. Rechercher un programmeur";
+        return "Rechercher un programmeur";
     }
 
     @Override
